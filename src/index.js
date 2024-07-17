@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client';
-import {App2} from './App';
+import {App} from './App001';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <App2/>
+    <App/>
   </>
 );
 
