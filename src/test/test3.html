@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .input-container, .list-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .input-container table {
+        width: 100%;
+        border-spacing: 0 10px;
+    }
+
+    .input-container td {
+        padding: 5px;
+    }
+
+    .input-container input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .input-container button{
+      height:140px;
+      width: 100%;
+    }
+
+    .list-container ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .list-container li {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .list-container button {
+        background-color: #dc3545;
+    }
+
+    .list-container button:hover {
+        background-color: #c82333;
+    }
+</style>
+</head>
+<body>
+  <div class="input-container">
+      <form id="userForm">
+        <table>
+          <tr>
+            <td>이름:</td>
+            <td><input id="nameInput" type='text' placeholder='이름'/></td>
+            <td rowspan="3">
+              <button id="addButton">추가</button>
+            </td>
+          </tr>
+          <tr>
+            <td>나이:</td>
+            <td><input id="ageInput" type='text' placeholder='나이'/></td>
+          </tr>
+          <tr>
+            <td>직업:</td>
+            <td><input id="jobInput" type='text' placeholder='직업'/></td>
+          </tr>
+        </table>        
+      </form>
+
+  </div>
+  <div class="list-container">
+    <ul id="userList">
+      <li> 홍길동 (34세) 무직 <button class="deleteButton">삭제</button></li>
+      <li> 이순신 (54세) 군인 <button class="deleteButton">삭제</button></li>
+      <li> 세종대왕 (74세) 정치인 <button class="deleteButton">삭제</button></li>
+    </ul>
+  </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const addButton = document.getElementById('addButton');
+      const userList = document.getElementById('userList');
+      const userForm = document.getElementById('userForm');
+      const nameInput = document.getElementById('nameInput');
+      const ageInput = document.getElementById('ageInput');
+      const jobInput = document.getElementById('jobInput');
+
+      addButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const name = nameInput.value;
+        const age = ageInput.value;
+        const job = jobInput.value;
+
+        if (name.trim() === '' || age.trim() === '' || job.trim() === '') {
+          alert('모든 필드를 입력하세요.');
+          return;
+        }
+
+        const listItem = document.createElement('li');
+        listItem.textContent = `${name} (${age}세) ${job}`;
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = '삭제';
+        deleteButton.classList.add('deleteButton');
+        deleteButton.addEventListener('click', function() {
+          listItem.remove();
+        });
+
+        listItem.appendChild(deleteButton);
+        userList.appendChild(listItem);
+
+        userForm.reset(); // 폼 초기화
+      });
+
+      // 기존 아이템에 삭제 기능 추가
+      const deleteButtons = document.querySelectorAll('.deleteButton');
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          button.parentElement.remove();
+        });
+      });
+    });
+  </script>
+  
+</body>
+</html>
