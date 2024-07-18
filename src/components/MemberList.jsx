@@ -1,3 +1,4 @@
+import { MemberItem } from './MemberItem';
 import './MemberList.css';
 // import './MemberList2.css';
 
@@ -68,8 +69,9 @@ export function MemberList(){
       {
         users.map(
           (user)=>(
-            <li key={user.id}>{user.id}. {user.name}({user.age}세){user.job} <button className="delBtn" onClick={()=>deleteUser(user.id)}>삭제</button></li>
+            <MemberItem id={user.id} name={user.name} age={user.age} job={user.job} call_func={deleteUser} />
 
+            // <li key={user.id}>{user.id}. {user.name}({user.age}세){user.job} <button className="delBtn" onClick={()=>deleteUser(user.id)}>삭제</button></li>
           )
         )
       }
