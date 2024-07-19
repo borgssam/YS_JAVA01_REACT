@@ -5,6 +5,8 @@ import useCounter from './useCounter';
 const MAX_CAPACITY = 10;
 
 export function Gate2(){
+  const [isFull, setIsFull] = useState(false); //최대정원
+  const [isEmpty, setIsEmpty] = useState(true);//정원0명
   const [count, increaseCount, decreaseCount] = useState(0);       //현재입장객
 
   //count값이 변경되면 실행
