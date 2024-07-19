@@ -1,9 +1,9 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 //최대정원
 const MAX_CAPACITY = 10;
 
-export function Gate(){
+export function Gate2(){
   const [isFull, setIsFull] = useState(false); //최대정원
   const [isEmpty, setIsEmpty] = useState(true);//정원0명
   const [count, setCount] = useState(0);       //현재입장객
@@ -11,17 +11,20 @@ export function Gate(){
   //입장객 1명 증가
   const increaseCount = ()=>{
     let _count = count+1;
-    setIsFull(_count >= MAX_CAPACITY); //최대정원의 상태를 셋팅 10명이상=>isFull:true
-    setIsEmpty(_count<= 0);            //비어있느 상태를 셋팅 0명 => isEmpty:true
     setCount(_count);                  //입장객값 수정-> 재랜더링
   }
   //입장객 1명 감소
   const decreaseCount = ()=>{
     let _count = count-1;
-    setIsFull(_count >= MAX_CAPACITY);//최대정원의 상태를 셋팅 10명이상=>isFull:true
-    setIsEmpty(_count<= 0);           //비어있느 상태를 셋팅 0명 => isEmpty:true
     setCount(_count);                 //입장객값 수정-> 재랜더링
   }
+
+  //count값이 변경되면 실행
+  useEffect(()=>{
+      setIsFull(count >= MAX_CAPACITY);//최대정원의 상태를 셋팅 10명이상=>isFull:true
+      setIsEmpty(count<= 0);           //비어있느 상태를 셋팅 0명 => isEmpty:true
+  },[count]);
+
   return (
     <div style={{padding:16}}>
       <p>총 {count}명 수용했습니다.</p>
