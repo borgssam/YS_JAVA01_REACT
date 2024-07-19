@@ -4,7 +4,7 @@ import useCounter from './useCounter';
 //최대정원
 const MAX_CAPACITY = 10;
 
-export function Gate2(){
+export function Gate3(){
   const [isFull, setIsFull] = useState(false); //최대정원
   const [isEmpty, setIsEmpty] = useState(true);//정원0명
   const [count, increaseCount, decreaseCount] = useState(0);       //현재입장객
