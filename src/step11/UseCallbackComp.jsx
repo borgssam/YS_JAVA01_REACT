@@ -4,10 +4,15 @@ import React, { useState, useMemo, useEffect, useCallback } from 'react';
 const calculate = (num) => {
   console.log('복잡한 계산 시작...');
   let result = 0;
+  const startTime = performance.now(); 
   for (let i = 0; i < 1000000000; i++) {
     result += num * num;
   }
+  const endTime = performance.now(); // 계산 종료 시간 기록
   console.log('복잡한 계산 완료...');
+  const elapsedTime = endTime - startTime; // 걸린 시간 계산
+  console.log(`계산에 걸린 시간: ${elapsedTime}밀리초`);
+
 
   return result;
 };
