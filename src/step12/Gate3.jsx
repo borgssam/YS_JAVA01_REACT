@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import useCounter from './useCounter';
+import {useCounter} from './useCounter';
 
 //최대정원
 const MAX_CAPACITY = 10;
@@ -7,7 +7,7 @@ const MAX_CAPACITY = 10;
 export function Gate3(){
   const [isFull, setIsFull] = useState(false); //최대정원
   const [isEmpty, setIsEmpty] = useState(true);//정원0명
-  const [count, increaseCount, decreaseCount] = useState(0);       //현재입장객
+  const [count, increaseCount, decreaseCount] = useCounter(0);       //현재입장객
 
   //count값이 변경되면 실행
   useEffect(()=>{
