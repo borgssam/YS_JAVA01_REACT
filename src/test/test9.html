@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function handleSubmit(e){
+      e.preventDefault();
+      msg = document.getElementById('name').value;
+      alert(msg);
+    }
+  </script>
+
+</head>
+<body>
+  <form action="" onsubmit="handleSubmit(event)">
+    <label>요청사항:
+    <textarea id="name">123</textarea>
+    </label>
+    <button type="submit">제출</button>
+  </form>
+  
+</body>
+</html>

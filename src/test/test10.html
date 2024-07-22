@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- alert( '선택한과일: apple'); -->
+  <script>
+    function handleSubmit(e){
+      e.preventDefault();
+      const _value = document.getElementById('fruit').value;
+      alert('선택한 과일 : '+ _value);
+    }
+  </script>
+
+</head>
+<body>
+  <form action="" onsubmit="handleSubmit(event)">
+    <select name="" id="fruit">
+      <option value="apple">사과</option>
+      <option value="banana">바나나</option>
+      <option value="grape">포도</option>
+      <option value="melon">멜론</option>
+    </select>
+    <button type="submit">제출</button>
+  </form>
+  
+</body>
+</html>
