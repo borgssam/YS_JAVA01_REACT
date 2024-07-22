@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function handleSubmit(e){
+      e.preventDefault();
+      alert(document.getElementById('name').value);
+    }
+  </script>
+</head>
+<body>
+  <form action="" onsubmit="handleSubmit(event)">
+    <label for="">이름</label>
+    <input type="text" name="" id="name">
+    <button type="submit">제출</button>
+  </form>
+  
+</body>
+</html>
